@@ -2689,24 +2689,21 @@ button.wk-button-collection, button.wk-button-product {
   color: #0792d1 !important;
 }
 
-.template-product .wk-link {
-  position: absolute !important;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-}
-
 #wishlist.template-page h1.small--text-center {
   background-color: #0792d1;
   max-width: 100%;
 }
 
-#wishlist .wk-add-item-form {
+#wishlist .wk-add-item-form, #wishlist .wk-purchase {
   display: none;
+}
+
+.js-nav .wk-icon svg {
+  padding-bottom: 1px;
+}
+
+a.wk-link .wk-icon {
+  top: 1px !important;
 }
 
 .rf-colours {
@@ -2904,9 +2901,17 @@ button.wk-button-collection, button.wk-button-product {
   margin-top: 116px;
 }
 
+@media (max-width: 989px) {
+  .rf-filters-wrapper .rf-filters-header h1 {
+    width: auto;
+  }
+}
 @media (max-width: 749px) {
   .rf-filters-wrapper {
     height: 55px;
+  }
+  .rf-filters-wrapper .rf-filters-header h1 {
+    width: 210px;
   }
 }
 nav ul li {
@@ -2918,6 +2923,7 @@ nav ul li {
 }
 
 .sub-menu {
+  display: none;
   background-color: #efefec;
   min-height: 135px;
   padding-bottom: 10px;

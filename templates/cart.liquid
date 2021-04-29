@@ -1,10 +1,14 @@
 <!-- /templates/cart.liquid -->
 
-<div class="grid">
+<div class="grid js-cart-page-contents">
+<span class="js-cart-item-count visually-hidden">{{ cart.item_count }}</span>
   <div class="grid__item">
     {% if cart.item_count > 0 %}
       <h1 class="h2 visually-hidden">{{ 'cart.general.title' | t }}</h1>
+
       <form action="/cart" method="post" novalidate class="cart">
+
+        
         <table class="cart-table responsive-table table--no-border">
           <thead class="cart__row cart__header-labels small--hide">
             <th class="text-left cart__table-cell--image">{{ 'cart.label.product' | t }}</th>
@@ -24,8 +28,9 @@
                     {% include 'image-style' with image: item.image, width: 720, height: 600, small_style: false, wrapper_id: wrapper_id, img_id: img_id %}
                     <div id="{{ wrapper_id }}" class="cart__image-wrapper supports-js">
                     
-                      {% if item.product.tags contains 'unframed' %}
+                      {% if item.product.handle contains 'fine-art-print'  %}
 
+      
                         {% assign masterProduct = item.product.handle | replace: 'fine-art-print', 'framed-print' %}
                         {% assign masterProduct = all_products[masterProduct] %}
                         {% assign masterUrl = masterProduct.url %}
@@ -71,7 +76,7 @@
                 <td class="cart__table-cell--meta text-center large-up--text-left">
                   <p>
 
-                    {% if item.product.tags contains 'unframed' %}
+                    {% if item.product.handle contains 'fine-art-print'  %}
                       <a href="{{ masterUrl }}">{{ item.product.title }}</a>
                     {% else %}
                       <a href="{{ item.url }}">{{ item.product.title }}</a>
@@ -106,7 +111,7 @@
                   <p class="txt--minor">
                     <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove">{{ 'cart.general.remove' | t }}</a>
                   </p>
-                </td>
+                </td> 
                 <td class="cart__table-cell--price medium-up--text-right" data-label="{{ 'cart.label.price' | t }}">
                   {%- if item.original_price != item.final_price -%}
                     <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
